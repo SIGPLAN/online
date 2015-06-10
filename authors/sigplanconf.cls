@@ -853,7 +853,7 @@
 
 \let \crdata = \copyrightdata
 
-\newcommand{\doi}[1]{%
+\newcommand{\assigneddoi}[1]{%
   \gdef \@doi {#1}}
 
 \newcommand{\proceedings}[1]{%
