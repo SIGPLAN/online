@@ -280,7 +280,7 @@
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 
-\ExecuteOptions{9pt,indentedstyle,times}
+\ExecuteOptions{10pt,indentedstyle,times}
 \@setflag \@explicitsize = \@false
 \ProcessOptions
 
