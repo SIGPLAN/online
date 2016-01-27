@@ -1074,11 +1074,13 @@
 %                       Title Page
 %                       ----- ----
 
-
 \@setflag \@addauthorsdone = \@false
+\@setflag \@hyperref = \@false
+\AtBeginDocument{\@ifpackageloaded{hyperref}{\@setflag \@hyperref = \@true}}
 
 \def \@titletext {\@latex@error{No title was provided}{}}
 \def \@subtitletext {}
+\def \@authors {}
 
 \newcount{\@authorcount}
 
@@ -1094,6 +1096,11 @@
   \gdef \@subtitletext {#1}}
 
 \newcommand{\authorinfo}[3]{%           {names}{affiliation}{email/URL}
+  \ifcase\@authorcount%
+    \edef\@authors{#1}%
+  \else%
+    \edef\@authors{{\@authors} and #1}%
+  \fi%
   \global\@increment \@authorcount
   \@withname\gdef {\@authorname\romannumeral\@authorcount}{#1}%
   \@withname\gdef {\@authoraffil\romannumeral\@authorcount}{#2}%
@@ -1107,6 +1114,14 @@
   \gdef \@titlebanner {#1}}
 
 \renewcommand{\maketitle}{%
+  \if\@hyperref
+    \ifx\@empty\@subtitletext%
+      \hypersetup{pdftitle=\@titletext}
+    \else
+      \hypersetup{pdftitle=\@titletext: \@subtitletext}
+    \fi
+    \hypersetup{pdfauthor=\@authors}
+  \fi
   \pagestyle{plain}%
   \if \@onecolumn
     {\hsize = \standardtextwidth
