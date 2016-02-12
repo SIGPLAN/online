@@ -1076,7 +1076,7 @@
 
 \@setflag \@addauthorsdone = \@false
 \@setflag \@hyperref = \@false
-\AtBeginDocument{\@ifpackageloaded{hyperref}{\@setflag \@hyperref = \@true}}
+\AtBeginDocument{\@ifpackageloaded{hyperref}{\@setflag \@hyperref = \@true}{}}
 
 \def \@titletext {\@latex@error{No title was provided}{}}
 \def \@subtitletext {}
