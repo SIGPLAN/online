@@ -441,6 +441,7 @@
 %                       Fonts
 %                       -----
 
+\renewcommand{\ttdefault}{lmtt} % cmtt doesn't have bold so use lmtt
 
 \if \@times
   \renewcommand{\rmdefault}{ptm}%
